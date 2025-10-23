@@ -1,0 +1,481 @@
+/* 全球风格 - 粉色设计：柔和的粉色、干净的卡片、宽大的间距、Inter 字体 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); /* 柔和的粉红色渐变 */
+    overflow-x: hidden;
+    color: #333;
+}
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+::selection {
+    color: #e0e0e0;
+    background: rgba(233, 30, 99, .35); 
+}
+
+/* 背景图像叠加 - 带有微妙的粉红色调 */
+#rin-bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -2;
+    background: url('background.jpg') center/cover no-repeat fixed;
+    background-color: #818181;
+}
+#rin-bg::after {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: -1;
+    background: rgba(66, 66, 66, .6); /* 中性灰色覆盖 */
+    backdrop-filter: blur(2px);
+}
+
+/* 增强的加载屏幕：多元素动画 - 视口单元精确中心 */
+#loader {
+    position: fixed;
+    top: 50%; /* 显式垂直居中 */
+    left: 50%; /* 显式水平居中 */
+    transform: translate(-50%, -50%); /* 精确居中 */
+    z-index: 99999;
+    width: 100vw; /* 完整视口宽度 */
+    height: 100vh; /* 完整视口高度 */
+    background: rgba(245, 247, 250, 0.98);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+#loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+.spinner-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #e91e63; 
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.welcome-text {
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 30px;
+    color: #e91e63; /* 粉色文字 */
+}
+.letter {
+    opacity: 0;
+    animation: fadeInLetter 0.5s ease-out forwards;
+    display: inline-block;
+}
+.letter:nth-child(1) { animation-delay: 0.1s; }
+.letter:nth-child(2) { animation-delay: 0.2s; }
+/* 继续延迟所有字母...（缩写）*/
+@keyframes fadeInLetter {
+    to { opacity: 1; transform: translateY(0); }
+}
+.progress-bar {
+    width: 200px;
+    height: 4px;
+    background: #e0e0e0;
+    border-radius: 2px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #e91e63, #f8bbd9); /* 粉色渐变 */
+    width: 0;
+    animation: progressFill 2s ease-out forwards;
+}
+@keyframes progressFill {
+    to { width: 100%; }
+}
+
+/* 简化人物部分 - 静态，滚动时无移动/变换 */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+    /* 未应用变换；静态 */
+}
+.hero-content {
+    max-width: 800px;
+    padding: 0 20px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* 添加阴影以提高可读性而无需覆盖 */
+}
+.hero-title {
+    font-size: 48px;
+    font-weight: 700;
+    margin: 0 0 10px;
+    letter-spacing: -1px;
+}
+.hero-subtitle {
+    color: #f8bbd9; /* 浅粉色 */
+    font-weight: 400;
+}
+.hero-slogan {
+    font-size: 18px;
+    font-weight: 300;
+    margin: 20px 0 30px;
+    opacity: 0.9;
+}
+.hero-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.hero-btn {
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    color: white;
+}
+.hero-btn-primary {
+    background: linear-gradient(135deg, #e91e63, #f06292); /* 粉色渐变 */
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+}
+.hero-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+}
+.hero-btn-secondary {
+    background: transparent;
+    border: 2px solid #f8bbd9; /* 浅粉色边框 */
+    color: #f8bbd9;
+}
+.hero-btn-secondary:hover {
+    background: #f8bbd9;
+    color: #c2185b; /* 悬停时显示深粉色文本 */
+}
+
+/* 主容器 */
+#rin-main {
+    padding: 20px 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    max-width: 1200px;
+    margin: auto;
+    animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 徽标和标题 */
+.rin-logo img {
+    border-radius: 15px;
+    max-width: 220px;
+    width: 95%;
+    padding-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+.rin-logo:hover img {
+    transform: scale(1.05);
+}
+.rin-left {
+    padding: 20px 25px;
+    text-align: center;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.6s ease-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.rin-left-title {
+    font-size: 25px;
+    color: white;
+    padding-bottom: 2px;
+    font-weight: 300;
+}
+.rin-left-title2 {
+    font-size: 15px;
+    color: white;
+    margin-bottom: 8px;
+}
+.rin-left-slogan {
+    font-size: 13px;
+    color: white;
+    padding-bottom: 2px;
+    opacity: 0.9;
+}
+
+/* 按钮 - 粉色风格：圆形、渐变、阴影 */
+.rin-btn {
+    width: 100%;
+    margin-top: 5px;
+    transition: all 0.3s ease;
+    border-radius: 25px; 
+    overflow: hidden;
+    position: relative;
+    color: white;
+    min-width: 100px !important;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+}
+.rin-btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+.rin-btn:hover::before {
+    transform: translateX(100%);
+}
+.rin-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(233, 30, 99, 0.3); /* 粉色阴影 */
+}
+.rin-btn-primary {
+    background: linear-gradient(135deg, #e91e63, #f06292); /* 粉色渐变 */
+    border-bottom: none; /* Removed for clean look */
+}
+.rin-btn-secondary {
+    background: linear-gradient(135deg, #ad1457, #c2185b); /* 深粉色调 */
+}
+
+/* 卡片 - 粉色网格，带有增强的阴影和过渡效果 */
+.cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+@media (min-width: 768px) {
+    .cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+.rin-card {
+    padding: 20px 25px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08); /* 更柔和的阴影 */
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    animation: slideInRight 0.7s ease-out 0.7s both;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.rin-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(233, 30, 99, 0.15); /* 粉色悬停阴影 */
+}
+@keyframes slideInRight {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+.rin-card-title {
+    font-size: 30px;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 400;
+    font-family: 'Inter', sans-serif;
+}
+.rin-card-title2 {
+    font-size: 20px;
+    color: #555;
+    margin-bottom: 5px;
+}
+.rin-card-content {
+    font-size: 17px;
+    color: #666;
+    margin-bottom: 5px;
+    line-height: 1.6;
+}
+
+/* 特定卡片样式 */
+.intro-card, .blog-card, .skills-card, .contact-card, .articles-card, .works-card, .quote-card, .footer-card {
+    grid-column: 1 / -1; /* 小屏幕上主卡的全宽 */
+}
+@media (min-width: 768px) {
+    .blog-card, .quote-card { grid-column: span 1; }
+}
+.blog-card {
+    background: linear-gradient(135deg, #e91e63, #f06292); /* 粉色渐变 */
+    color: white;
+    text-align: center;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+.blog-card h3 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    font-weight: 600;
+}
+.blog-card p {
+    margin: 0;
+    opacity: 0.9;
+    font-weight: 400;
+}
+.blog-link {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background 0.3s ease;
+    font-weight: 500;
+}
+.blog-link:hover {
+    background: rgba(255,255,255,0.3);
+}
+.skills-grid, .articles-grid, .works-grid, .social-buttons {
+    display: grid;
+    gap: 15px;
+}
+.social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.social-btn {
+    flex: 1;
+    min-width: 120px;
+}
+.article-preview, .work-preview {
+    padding: 15px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    border-left: 4px solid #e91e63; /* 粉色边框 */
+}
+.article-preview:hover, .work-preview:hover {
+    padding-left: 20px;
+    border-left-width: 6px;
+}
+.rin-article-title {
+    color: #333;
+    font-size: 18px;
+    font-weight: 500;
+}
+.rin-article-content {
+    padding-top: 10px;
+    color: #666;
+    font-size: 14px;
+}
+.rin-article-more {
+    text-decoration: none;
+    color: #e91e63; /* 粉色链接 */
+    font-size: 13px;
+    margin-left: 5px;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+.rin-article-more:hover {
+    color: #c2185b; /* 深粉色 */
+}
+
+/* 进度条 */
+.mdui-progress {
+    background-color: rgba(0, 0, 0, .1) !important;
+    height: 6px;
+    border-radius: 3px;
+    width: 90%;
+    overflow: hidden;
+}
+.mdui-progress-determinate {
+    background: linear-gradient(90deg, #e91e63, #f06292); /* 粉色渐变 */
+    border-radius: 3px;
+    transition: width 1.5s ease-out;
+    animation: shimmer 2s infinite;
+}
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+.rin-progress-title {
+    color: #555;
+    padding-bottom: 6px;
+    padding-top: 10px;
+    font-weight: 500;
+}
+
+/* 页脚 */
+#footer {
+    text-align: center;
+    padding: 20px;
+    color: #888;
+    font-size: 12px;
+}
+#footer a {
+    color: #e91e63; /* 粉色链接 */
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+#footer a:hover {
+    color: #c2185b; /* 深粉色 */
+}
+.rin-tr {
+    width: 80%;
+    height: 2px;
+    margin: 40px auto 20px;
+    background: rgba(233, 30, 99, 0.3); /* 粉红线 */
+    border-radius: 1px;
+}
+
+/* 响应式媒体查询 */
+@media (max-width: 1024px) {
+    .rin-btn { margin-bottom: 10px; width: auto; }
+    .rin-logo img { display: none; }
+    .hero-title { font-size: 36px; }
+    .rin-left-title { font-size: 30px; }
+    .rin-left-title2 { font-size: 20px; }
+    .rin-left-slogan { font-size: 15px; }
+}
+@media (min-width: 420px) and (max-width: 1024px) {
+    .rin-left-title { font-size: 35px !important; }
+    .rin-left-title2 { font-size: 25px !important; }
+    .rin-left-slogan { font-size: 20px !important; }
+}
+
+/* 暗黑模式支持 */
+@media (prefers-color-scheme: dark) {
+    body { 
+        background: linear-gradient(135deg, #2e2e2c 0%, #1a1a1a 100%); 
+        color: #ddd;
+    }
+    .rin-card { 
+        background: rgba(66, 66, 66, 0.95); 
+        color: #ddd; 
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+    .rin-card-title { color: #fff; }
+    .rin-card-title2 { color: #ccc; }
+    .rin-card-content { color: #bbb; }
+    .rin-progress-title { color: #ccc; }
+    .rin-article-title { color: #fff; }
+    .rin-article-content { color: #aaa; }
+    .hero-section { color: #fff; }
+}
