@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <!--
+<!--
      * AyagawaSeirin 的页面 - 粉色增强版（无视差）
-     * 最后更新：2025 年 10 月 23 日（由 Sakurairinaqwq 基于 AyagawaSeirin 的原版更新）
+     * 最后更新：2025 年 12 月 9 日（由 Sakurairinaqwq 基于 AyagawaSeirin 的原版更新）
      * GitHub：https://github.com/AyagawaSeirin/
      * GitHub：https://github.com/Sakurairinaqwq
      * 由 AyagawaSeirin 倾情制作 [https://owomoe.net/]  由Sakurairinaqwq 暴力更改！
-     * 优化：移除加载器中的 pulse-ring；在 quote-card 后添加 rin-tr；按钮恢复为粉色主题；加载器明确居中。
-     * 备注：维护外部 CSS/JS；按钮、进度等颜色调整为粉色。
     -->
+<head>
     <meta charset="utf-8">
     <title>樱井璃奈 - Sakurairinaqwq</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="https://unpkg.com/mdui@0.4.3/dist/css/mdui.min.css">
-    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1625701_q2422cy34wn.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"> <!-- Patreon-inspired font: Inter -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+    <link rel="stylesheet" href="assets/css/index.css"> 
+    
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
+    
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1625701_q2422cy34wn.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://at.alicdn.com/t/font_1625701_q2422cy34wn.css"></noscript>
+    
     <link rel="icon" href="assets/img/logo-circul-100.png">
-    <link rel="stylesheet" href="assets/css/index.css"> <!-- External CSS -->
-    <!-- Google Analytics (commented out for privacy; uncomment if needed) -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162013750-5"></script> -->
 </head>
-<body class="mdui-theme-primary-pink mdui-theme-accent-pink"> <!-- Reverted to pink theme -->
-    <!-- 增强的加载屏幕：多元素（旋转器、淡入淡出的欢迎文本、进度条） - 移除脉冲环，明确居中 -->
+<body class="mdui-theme-primary-pink mdui-theme-accent-pink">
+
     <div id="loader">
         <div class="loader-content">
-            <div class="spinner-container">
-            </div>
             <div class="welcome-text">
                 <span class="letter">W</span><span class="letter">e</span><span class="letter">l</span><span class="letter">c</span><span class="letter">o</span><span class="letter">m</span><span class="letter">e</span>
                 <br>
@@ -44,7 +44,6 @@
 
     <div id="rin-bg"></div>
     <main id="rin-main">
-        <!-- 简化的介绍部分 - 静态，无视差/移动 -->
         <section class="hero-section">
             <div class="hero-content">
                 <h1 class="hero-title">樱井璃奈 <span class="hero-subtitle">Sakurairinaqwq</span></h1>
@@ -56,31 +55,34 @@
             </div>
         </section>
 
+        <button class="mdui-fab mdui-color-pink-accent mdui-ripple mdui-hidden-md-up fab-menu" mdui-drawer="{target: '#rin-drawer', swipe: true}">
+          <i class="mdui-icon material-icons">menu</i>
+        </button>
+
+
         <div class="mdui-row">
-            <div class="mdui-col-xs-12 mdui-col-md-2">
-                <div class="rin-left">
+            <div class="mdui-col-xs-12 mdui-col-md-2 mdui-hidden-sm-down">
+                <div class="rin-left" id="rin-left-nav">
                     <div class="rin-logo">
                         <img src="assets/img/logo.jpg" alt="AyagawaSeirin Logo">
                     </div>
-                    <!-- 导航按钮 - 粉色渐变 -->
-                    <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-primary mdui-text-capitalize" href="https://arkn.icu/" target="_blank">
+                    <a class="mdui-btn mdui-btn-raised rin-btn mdui-text-capitalize" href="https://arkn.icu/" target="_blank">
                         <span class="iconfont iconBlog"></span> Blog
                     </a>
-                    <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-primary mdui-text-capitalize" href="https://arkn.icu/shuoshuo" target="_blank">
+                    <a class="mdui-btn mdui-btn-raised rin-btn mdui-text-capitalize" href="https://arkn.icu/shuoshuo" target="_blank">
                         <span class="iconfont iconrizhi"></span> Diary
                     </a>
-                    <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-primary mdui-text-capitalize" href="https://arkn.icu/links" target="_blank">
+                    <a class="mdui-btn mdui-btn-raised rin-btn mdui-text-capitalize" href="https://arkn.icu/links" target="_blank">
                         <span class="iconfont iconfriend"></span> Friends
                     </a>
-                    <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-primary mdui-text-capitalize" href="https://arkn.icu/2025/08/15/Life/" target="_blank">
+                    <a class="mdui-btn mdui-btn-raised rin-btn mdui-text-capitalize" href="https://arkn.icu/2025/08/15/Life/" target="_blank">
                         <span class="iconfont iconabout"></span> About
                     </a>
                 </div>
             </div>
             <div class="mdui-col-xs-12 mdui-col-md-10">
                 <div class="cards-grid"> 
-                    <!-- 介绍卡 -->
-                    <div class="mdui-card rin-card intro-card">
+                    <div class="mdui-card rin-card intro-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="rin-card-part" id="introduce">
                             <div class="rin-card-content mdui-typo">
                                 你好，这里是樱井璃奈喵~，普通的女生一枚~<br>
@@ -90,15 +92,13 @@
                         </div>
                     </div>
 
-                    <!--- 粉色风格增强 -->
-                    <div class="mdui-card rin-card blog-card" id="way-to-blog">
+                    <div class="mdui-card rin-card blog-card" id="way-to-blog" data-aos="zoom-in" data-aos-delay="200">
                         <h3>开往部落格</h3>
                         <p>Join the journey to endless possibilities in blogging!</p>
                         <a href="https://arkn.icu/" target="_blank" class="blog-link">Start Your Adventure →</a>
                     </div>
 
-                    <!-- 战斗力卡 - 进度条网格 -->
-                    <div class="mdui-card rin-card skills-card" id="fighting">
+                    <div class="mdui-card rin-card skills-card" id="fighting" data-aos="fade-right" data-aos-delay="300">
                         <div class="rin-card-title2 mdui-typo"><a href="#fighting">#</a> 战斗力</div>
                         <div class="mdui-container skills-grid">
                             <div class="mdui-row">
@@ -114,70 +114,63 @@
                                         <div class="mdui-progress-determinate" style="width: 30%;"></div>
                                     </div>
                                 </div>
-                                <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4">
+                                <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4" mdui-tooltip="{content: '对这个世界的热爱程度'}">
                                     <div class="rin-progress-title">世界</div>
                                     <div class="mdui-progress">
                                         <div class="mdui-progress-determinate" style="width: 2%;"></div>
-                                <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4" mdui-tooltip="{content: '对这个世界的热爱程度'}"></div>
                                     </div>
                                 </div>
-                                <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4">
+                                <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4" mdui-tooltip="{content: '只会躲在老公身后qwq'}">
                                     <div class="rin-progress-title">社交</div>
                                     <div class="mdui-progress">
                                         <div class="mdui-progress-determinate" style="width: 0%;"></div>
-                                <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4" mdui-tooltip="{content: '只会躲在老公身后qwq'}"></div>
                                     </div>
                                 </div>
-                                <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4">
+                                <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4" mdui-tooltip="{content: '对他人的感情深度'}">
                                     <div class="rin-progress-title">情感</div>
                                     <div class="mdui-progress">
                                         <div class="mdui-progress-determinate" style="width: 100%;"></div>
-                                <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4" mdui-tooltip="{content: '对他人的感情深度'}"></div>
                                     </div>
                                 </div>
-                                <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4">
+                                <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4" mdui-tooltip="{content: '让事情发生的能力！'}">
                                     <div class="rin-progress-title">搞事情</div>
                                     <div class="mdui-progress">
                                         <div class="mdui-progress-determinate" style="width: 78%;"></div>
-                                <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4" mdui-tooltip="{content: '让事情发生的能力！'}"></div>
                                     </div>
                                 </div>
-                                <!-- 如果需要可以添加更多进度条 -->
                             </div>
                         </div>
                     </div>
 
-                    <!-- 联系卡 - 粉色社交按钮 -->
-                    <div class="mdui-card rin-card contact-card" id="contact">
+                    <div class="mdui-card rin-card contact-card" id="contact" data-aos="fade-left" data-aos-delay="400">
                         <div class="rin-card-title2 mdui-typo"><a href="#contact">#</a> 咱生活的地方</div>
                         <div class="social-buttons">
-                            <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-primary mdui-text-capitalize social-btn" href="https://twitter.com/Sakurairinaqwq" target="_blank">
+                            <a class="mdui-btn mdui-btn-raised rin-btn mdui-text-capitalize social-btn" href="https://twitter.com/Sakurairinaqwq" target="_blank">
                                 <span class="iconfont icontwitter-fill"></span> Twitter
                             </a>
-                            <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-primary mdui-text-capitalize social-btn" href="https://t.me/Sakurairinaqwq" target="_blank">
+                            <a class="mdui-btn mdui-btn-raised rin-btn mdui-text-capitalize social-btn" href="https://t.me/Sakurairinaqwq" target="_blank">
                                 <span class="iconfont icontelegram"></span> Telegram
                             </a>
-                            <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-secondary mdui-text-capitalize social-btn" href="https://github.com/Sakurairinaqwq" target="_blank">
+                            <a class="mdui-btn mdui-btn-raised rin-btn mdui-text-capitalize social-btn social-btn-secondary" href="https://github.com/Sakurairinaqwq" target="_blank">
                                 <span class="iconfont icongithub"></span> Github
                             </a>
-                            <a class="mdui-btn mdui-btn-raised rin-btn rin-btn-primary mdui-text-capitalize social-btn" href="mailto:Sakurairinaqwq@outlook.jp" target="_blank">
+                            <a class="mdui-btn mdui-btn-raised rin-btn mdui-text-capitalize social-btn" href="mailto:Sakurairinaqwq@outlook.jp" target="_blank">
                                 <span class="iconfont iconmail_fill"></span> Mail
                             </a>
                         </div>
                     </div>
 
-                    <!-- 作品卡 - 预览网格 -->
-                    <div class="mdui-card rin-card articles-card" id="article">
+                    <div class="mdui-card rin-card articles-card" id="article" data-aos="fade-up" data-aos-delay="500">
                         <div class="rin-card-title2 mdui-typo"><a href="#article">#</a> 作品</div>
                         <div class="articles-grid">
                             <a target="_blank" href="https://arkn.icu/2025/12/04/UnrealFabAssistantPlus/">
-                                <div class="mdui-card rin-card rin-card-article article-preview">
+                                <div class="mdui-card rin-card rin-card-article">
                                     <div class="rin-article-title">[UnrealFabAssistantPlus]</div>
                                     <div class="rin-article-content">众所周知，Fab有很多免费插件，但一个个领取太麻烦，所以我在RyensX的代码基础上魔改了一番。</div>
                                 </div>
                             </a>
                             <a target="_blank" href="https://arkn.icu/2024/11/24/Asphalt9API/">
-                                <div class="mdui-card rin-card rin-card-article article-preview">
+                                <div class="mdui-card rin-card rin-card-article">
                                     <div class="rin-article-title">狂野飙车9逆向用户API</div>
                                     <div class="rin-article-content">因为Gameloft的骗氪行为，尝试逆向后发现的本地可调用API...</div>
                                 </div>
@@ -186,32 +179,21 @@
                         <a class="rin-article-more" target="_blank" href="https://arkn.icu">Learn more...</a>
                     </div>
 
-                    <!-- 文章卡片 - 类似网格 -->
-                    <div class="mdui-card rin-card works-card" id="works">
+                    <div class="mdui-card rin-card works-card" id="works" data-aos="fade-up" data-aos-delay="600">
                         <div class="rin-card-title2 mdui-typo"><a href="#works">#</a> 文章</div>
                         <div class="works-grid">
                             <a target="_blank" href="https://arkn.icu/2025/09/29/OpenwrtExpanding/">
-                                <div class="mdui-card rin-card rin-card-article work-preview">
+                                <div class="mdui-card rin-card rin-card-article">
                                     <div class="rin-article-title">openwrt_space</div>
                                     <div class="rin-article-content">space插件，将Openwrt初始化存储设置为硬盘最大内存，防止卡死</div>
                                 </div>
                             </a>
-                            <!-- 添加更多作品预览 -->
                         </div>
                         <a class="rin-article-more" target="_blank" href="https://arkn.icu">Learn more...</a>
                     </div>
-
-                    <div class="rin-tr"></div>
-
-                    <!-- 结束引文卡 -->
-                    <div class="mdui-card rin-card quote-card" id="last">
-                        <div class="rin-card-title2">樱井璃奈@Sakurairinaqwq</div>
-                        <div class="rin-card-content">一切都是命运石之门的选择，顺其自然吧</div>
-                    </div>
                     <div class="rin-tr"></div> 
 
-                    <!-- 页脚卡片 -->
-                    <div class="mdui-card rin-card footer-card" id="footer">
+                    <div class="mdui-card rin-card footer-card" id="footer" data-aos="fade-up" data-aos-delay="800">
                         <div class="rin-card-content">©2025 Sakurairinaqwq | Made with love by Sakurairinaqwq | BG: <a href="https://www.pixiv.net/artworks/56652667" id="bg-link" target="_blank">Pixiv</a></div>
                     </div>
                 </div>
@@ -219,8 +201,8 @@
         </div>
     </main>
 
-    <!-- 外部 JS -->
     <script src="https://unpkg.com/mdui@0.4.3/dist/js/mdui.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
